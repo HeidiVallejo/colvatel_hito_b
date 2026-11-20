@@ -99,5 +99,4 @@ if stats.has_solution:
     print("\nPrimeras asignaciones:")
     print(df_result.head(10))
 else:
- print("El modelo no encontro solucion en el tiempo limite")
     print("El modelo no encontro solucion en el tiempo limite")
