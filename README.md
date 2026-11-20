@@ -16,9 +16,9 @@ python src/verificar.py
 - output/: resultados
 
 ## Hallazgos
-- Con 10 visitas y 5 tecnicos, el modelo asigna todas las visitas.
-- La carga promedio es de X visitas por tecnico.
-- El objetivo optimo es Y.
+Con 10 visitas y 5 técnicos, el modelo asigna todas las visitas.
+La carga promedio es de 2 visitas por técnico.
+El objetivo óptimo es 135.0.
 
 ## Autores
 Paola Moreno, Daniel Segura, Heidi Vallejo
