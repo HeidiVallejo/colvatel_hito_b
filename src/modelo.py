@@ -1,8 +1,3 @@
-# modelo.py
-# Modelo de asignacion de visitas Colvatel - Hito B
-# Ejecutar desde la raiz del repositorio:
-#   python src/modelo.py
-
 import pulp
 import pandas as pd
 
@@ -66,6 +61,12 @@ for i in I:
     for j in J:
         prob += x[(i, j)] <= comp[(i, j)]
 
+# --- AQUI ESTAN LAS RESTRICCIONES AM/PM QUE PIDIO EL DOCENTE ---
+for i in I:
+    prob += pulp.lpSum(x[(i, j)] for j in J if str(franja[j]).startswith('AM')) <= 3
+    prob += pulp.lpSum(x[(i, j)] for j in J if str(franja[j]).startswith('PM')) <= 3
+# ---------------------------------------------------------------
+
 # 6. Resolver
 print("Resolviendo...")
 stats = prob.solve(pulp.COIN_CMD(msg=0, timeLimit=30))
@@ -98,4 +99,5 @@ if stats.has_solution:
     print("\nPrimeras asignaciones:")
     print(df_result.head(10))
 else:
+ print("El modelo no encontro solucion en el tiempo limite")
     print("El modelo no encontro solucion en el tiempo limite")
